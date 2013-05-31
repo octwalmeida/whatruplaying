@@ -7,12 +7,27 @@ class Portal extends MY_Controller{
 		parent::__construct();
 	}
 	
-	function facebookLogin(){
+	function index_get(){
+		
+	}
+	
+	function facebookLogin_get(){
+		$userName = $this->post('userName');
+		$userPasswd = $this->post('password');
+		$this->load->library("FacebookFunctions");
+	}
+	
+	function commonLogin_post(){
 		$userName = $this->post('userName');
 		$userPasswd = $this->post('password');
 	}
 	
-	function commonLogin_post(){
+	function googlePlusLogin(){
+		$userName = $this->post('userName');
+		$userPasswd = $this->post('password');
+	}
+	
+	function youtubeLogin(){
 		$userName = $this->post('userName');
 		$userPasswd = $this->post('password');
 	}

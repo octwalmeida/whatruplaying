@@ -3,6 +3,11 @@
 require APPPATH.'/libraries/REST_Controller.php';
 
 class MY_Controller extends REST_Controller{
+	function __construct(){
+		parent::__construct();
+		session_start();
+	}
+	
 	function simpleCurl($url,$method = null, $data = null){
 		$cURL = curl_init($url);
 		curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
