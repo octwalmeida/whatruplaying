@@ -7,14 +7,31 @@ class Portal extends MY_Controller{
 		parent::__construct();
 	}
 	
-	function index_get(){
-		
-	}
-	
+	//gets the facebook login Url and then after login gets the user info
 	function facebookLogin_get(){
 		$userName = $this->post('userName');
 		$userPasswd = $this->post('password');
 		$this->load->library("FacebookFunctions");
+		$data['login'] = $this->facebookfunctions->getLoginUrl();
+		$info = $this->facebookfunctions->getInfo();
+		
+		//check if the info came back from facebook
+		if($info){
+			$this->load->library('../controllers/User');
+			$user = $this->user;
+			$user->setUserName($info['name']);
+			$user->setUserCity($info['location']['name']);
+			$data['info'] = $info;
+		}
+		$this->load->view("teste",$data);
+	}
+	
+	function register_get(){
+		
+	}
+	
+	function doRegister(){
+		
 	}
 	
 	function commonLogin_post(){

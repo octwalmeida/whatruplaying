@@ -1,7 +1,8 @@
 <?php
 
-class userController extends MY_Controller{
+class User extends MY_Controller{
 	private $userName;
+	private $userCity;
 	private $userPassword;
 	private $userFacebook;
 	private $userXboxLive;
@@ -140,6 +141,20 @@ class userController extends MY_Controller{
 	public function setUserYoutube($userYoutube) {
 		$this->userYoutube = $userYoutube;
 	}
+	/**
+	 * @return the $userCity
+	 */
+	public function getUserCity() {
+		return $this->userCity;
+	}
+
+	/**
+	 * @param field_type $userCity
+	 */
+	public function setUserCity($userCity) {
+		$this->userCity = $userCity;
+	}
+
 
 	
 
