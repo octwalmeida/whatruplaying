@@ -1,7 +1,8 @@
 <?php
-
-class User extends MY_Controller{
+require APPPATH.'/libraries/MY_Model.php';
+class Users extends MY_Model{
 	private $userName;
+	private $userLastName;
 	private $userCity;
 	private $userPassword;
 	private $userFacebook;
@@ -16,11 +17,44 @@ class User extends MY_Controller{
 		parent::__construct();
 	}
 	
+	function createUser($userName, $userLastName, $userCity, $userPassword, $userFacebook, $userXboxLive, $userPsn, $userGoogleGame, $userYoutube){
+		$this->setUserName($userName);
+		$this->setUserLastName($userLastName);
+		$this->setUserCity($userCity);
+		$this->setUserPassword(md5($userPassword));
+		$this->setUserFacebook($userFacebook);
+		$this->setUserXboxLive($userXboxLive);
+		$this->setUserPsn($userPsn);
+		$this->setUserGoogleGame($userGoogleGame);
+		$this->setUserYoutube($userYoutube);
+	}
+	
+	function getUserActivityByLiveOrPsn($userId){
+		/**
+		 * @todo get the rest api for live and psn activities
+		 */
+	}
+	
+	
+	function saveUser($user){
+		/**
+		 * @todo Create a noSQL method that will insert the object on the data base
+		 */
+		
+	}
+	
 	/**
 	 * @return the $userName
 	 */
 	public function getUserName() {
 		return $this->userName;
+	}
+
+	/**
+	 * @return the $userCity
+	 */
+	public function getUserCity() {
+		return $this->userCity;
 	}
 
 	/**
@@ -87,6 +121,13 @@ class User extends MY_Controller{
 	}
 
 	/**
+	 * @param field_type $userCity
+	 */
+	public function setUserCity($userCity) {
+		$this->userCity = $userCity;
+	}
+
+	/**
 	 * @param field_type $userPassword
 	 */
 	public function setUserPassword($userPassword) {
@@ -142,21 +183,19 @@ class User extends MY_Controller{
 		$this->userYoutube = $userYoutube;
 	}
 	/**
-	 * @return the $userCity
+	 * @return the $userLastName
 	 */
-	public function getUserCity() {
-		return $this->userCity;
+	public function getUserLastName() {
+		return $this->userLastName;
 	}
 
 	/**
-	 * @param field_type $userCity
+	 * @param field_type $userLastName
 	 */
-	public function setUserCity($userCity) {
-		$this->userCity = $userCity;
+	public function setUserLastName($userLastName) {
+		$this->userLastName = $userLastName;
 	}
 
-
-	
 
 }
 

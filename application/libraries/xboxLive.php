@@ -1,13 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-require APPPATH.'/libraries/MY_controller.php';
 
-class xboxLive extends MY_Controller{
+class xboxLive{
 	var $userName;
 	
-	function __construct(){
-		parent::__construct();
-	}
 	
 	function getProfile(){
 		$url = "https://xboxapi.com/profile/".$this->getUserName();

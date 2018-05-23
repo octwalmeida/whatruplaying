@@ -42,7 +42,7 @@ class FacebookFunctions {
 			$me = $this->facebook->api('/me');
 			return $me;
 		} catch (FacebookApiException $e) {
-			return $e->getMessage();
+			return false;
 		}
 	}
 	
@@ -57,11 +57,6 @@ class FacebookFunctions {
 		} catch (FacebookApiException $e) {
 			return $e->getMessage();
 		}
-	}
-	
-	function getInfo(){
-		$me = $this->facebook->api('/me');
-		return $me;
 	}
 }
 
